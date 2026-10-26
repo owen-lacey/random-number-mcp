@@ -27,6 +27,26 @@ claude mcp add random-number -- node /absolute/path/to/random-number-mcp/index.j
 
 ### Claude Desktop
 
+Add this to your config file, then restart Claude Desktop:
+
+- macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- Windows: `%APPDATA%\Claude\claude_desktop_config.json`
+
+Run it straight from GitHub (no clone needed):
+
+```json
+{
+  "mcpServers": {
+    "random-number": {
+      "command": "npx",
+      "args": ["-y", "github:owen-lacey/random-number-mcp"]
+    }
+  }
+}
+```
+
+Or point it at a local clone (after `npm install`):
+
 ```json
 {
   "mcpServers": {
@@ -37,3 +57,5 @@ claude mcp add random-number -- node /absolute/path/to/random-number-mcp/index.j
   }
 }
 ```
+
+If the file already has an `mcpServers` block, add the `random-number` entry to it rather than replacing it.
