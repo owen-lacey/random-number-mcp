@@ -1,6 +1,6 @@
 # random-number-mcp
 
-An MCP server with exactly one job: giving your AI a random number. Because apparently that needed a protocol.
+An MCP server with one job: giving your AI a random number.
 
 ## Tool
 
