@@ -8,9 +8,8 @@ An MCP server with exactly one job: giving your AI a random number. Because appa
 
 | Param     | Type    | Default | Description                     |
 | --------- | ------- | ------- | ------------------------------- |
-| `max`     | number  | `100`   | Upper bound (inclusive)         |
-| `min`     | number  | `0`     | Lower bound (inclusive)         |
-| `integer` | boolean | `true`  | Return a whole number           |
+| `max`     | integer | `10`    | Upper bound (inclusive)         |
+| `min`     | integer | `0`     | Lower bound (inclusive)         |
 
 Returns something like `🎲 42`.
 

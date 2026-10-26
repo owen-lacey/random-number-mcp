@@ -11,14 +11,13 @@ server.registerTool(
   {
     title: "Random Number",
     description:
-      "Returns a random number between min and max (inclusive). Outsource your randomness, like a pro.",
+      "Returns a random whole number between min and max (inclusive). Outsource your randomness, like a pro.",
     inputSchema: {
-      max: z.number().default(100).describe("Upper bound (inclusive). Defaults to 100."),
-      min: z.number().default(0).describe("Lower bound (inclusive). Defaults to 0."),
-      integer: z.boolean().default(true).describe("Return a whole number. Defaults to true."),
+      max: z.number().int().default(10).describe("Upper bound (inclusive). Defaults to 10."),
+      min: z.number().int().default(0).describe("Lower bound (inclusive). Defaults to 0."),
     },
   },
-  async ({ max, min, integer }) => {
+  async ({ max, min }) => {
     if (min >= max) {
       return {
         isError: true,
@@ -26,20 +25,7 @@ server.registerTool(
       };
     }
 
-    let value;
-    if (integer) {
-      const lo = Math.ceil(min);
-      const hi = Math.floor(max);
-      if (lo > hi) {
-        return {
-          isError: true,
-          content: [{ type: "text", text: `There are no integers between ${min} and ${max}.` }],
-        };
-      }
-      value = randomInt(lo, hi + 1);
-    } else {
-      value = min + Math.random() * (max - min);
-    }
+    const value = randomInt(min, max + 1);
 
     return { content: [{ type: "text", text: `🎲 ${value}` }] };
   }
